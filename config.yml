@@ -1,0 +1,59 @@
+# ================= Chaoxing-QuizKit 配置文件 =================
+# 修改后可在 TUI 界面点击「重新加载」生效，或直接在 TUI「配置中心」中修改保存。
+# 注意：本程序不会保存手机号、密码或 Cookie，每次启动均需手动登录。
+
+# -------------------- 基础与界面设置 --------------------
+# 界面主题模式，可选: [dark, light]
+theme: dark
+
+# -------------------- 导出格式与文件组织 --------------------
+# 导出格式列表（支持多选），可选: [txt, md, docx, pdf, json]
+export_formats: [txt, md]
+# 是否同时生成无答案刷题版（隐藏正确答案与解析，适用于 txt/md/docx/pdf）
+export_no_answer_edition: false
+# 是否以散装分文件形式保存（true: 按章节或题型拆分为多个文件，false: 合并为单文件）
+bulk_files: false
+# 散装分文件时的拆分依据，可选: [chapter, type]（chapter=按章节，type=按题型）
+bulk_split_by: chapter
+# 导出保存目录（相对路径或绝对路径，默认为 out）
+save_path: out
+# 是否允许覆盖同名文件（false 时仅保存带时间戳的文件）
+allow_overwrite_files: true
+# 是否额外保存一份带时间戳的历史备份文件
+save_timestamp_backup: false
+# 导出完成后自动打开生成的文件或目录
+auto_open_output: false
+
+# -------------------- 内容与图片处理 --------------------
+# 导出文本中是否在题号旁标注所属章节
+include_chapter_tag: true
+# 导出文本中是否包含题目难易度与解析信息
+include_analysis: true
+# 是否对跨章节完全重复的题目进行全局去重
+deduplicate_questions: false
+# 是否将题目/答案中的图片下载到本地 images/ 目录并内嵌到文档（true: Word/PDF 直接显示图片、MD 离线可读；false: 仅保留图片链接，Word/PDF 不显示图片）
+download_images: true
+# 下载图片最大宽度像素上限（>0 时等比缩放，0 表示保持原图尺寸）
+image_max_width_px: 1200
+# PDF 导出使用的中文字体路径（留空自动检测 Windows 系统微软雅黑/黑体/宋体）
+pdf_font_path: ''
+
+# -------------------- 导出范围默认设置 --------------------
+# 默认导出范围模式，可选: [all, chapters, types, easy]
+default_range_mode: all
+# 全量导出时，是否额外按难度/题型补充抓取未归入文件夹的散题
+include_unclassified_extra: true
+
+# -------------------- 网络与稳定性设置 --------------------
+# 单次自测组卷最大题数（超星接口上限为 500）
+max_batch_size: 500
+# HTTP 请求超时时间（秒）
+request_timeout: 20
+# 组卷任务状态轮询间隔（秒）
+poll_interval_sec: 2.0
+# 单批次失败最大重试次数
+max_retries: 2
+# 每批抓取完成后是否自动删除账号中的临时自测卷
+auto_clean_temp_tests: true
+# HTTP/HTTPS 代理地址（如 http://127.0.0.1:7890，留空表示不使用代理）
+proxy: ''
